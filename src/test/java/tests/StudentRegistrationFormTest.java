@@ -2,7 +2,6 @@ package tests;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -41,7 +40,7 @@ public class StudentRegistrationFormTest {
     String currentAddress = "my current address";
     String fileName = "art.jpg";
     File file = new File("src/test/resources/" + fileName);
-    Map<String, String> enteredData = new HashMap<String, String>();
+    Map<String, String> enteredData = new HashMap<>();
     enteredData.put("Student Name", firstName + " " + lastName);
     enteredData.put("Student Email", userEmail);
     enteredData.put("Gender", gender);
@@ -75,7 +74,6 @@ public class StudentRegistrationFormTest {
     $("#stateCity-wrapper #city .css-26l3qy-menu").$(byText(city)).click();
 
     $("#submit").click();
-    $(".modal-content").shouldBe(visible);
     ElementsCollection rows = $$(".modal-content tbody tr");
     rows.forEach(row -> {
       ElementsCollection tds = row.$$("td");
