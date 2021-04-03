@@ -36,7 +36,7 @@ public class StudentRegistrationFormTest {
     String hobby = "Music";
     String state = "Haryana";
     String city = "Panipat";
-    String subject = ""; //todo: поле не сохраняется
+    String subject = "Chemistry";
     String currentAddress = "my current address";
     String fileName = "art.jpg";
     File file = new File("src/test/resources/" + fileName);
@@ -63,7 +63,8 @@ public class StudentRegistrationFormTest {
     $(".react-datepicker__year-select").$(byText(yearOfBirth)).click();
     $(".react-datepicker__month").$(byText(dateOfBirth)).click();
 
-    //$("#subjectsInput").setValue(subject); //todo: поле не сохраняется
+    $("#subjectsInput").val(subject);
+    $(".subjects-auto-complete__menu-list").$(byText(subject)).click();
     $("#hobbiesWrapper .col-md-9.col-sm-12 [for=hobbies-checkbox-3]").shouldHave(text(hobby))
                                                                      .click();
     $("#uploadPicture").uploadFile(file);
