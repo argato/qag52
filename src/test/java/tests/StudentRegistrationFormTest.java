@@ -24,7 +24,6 @@ public class StudentRegistrationFormTest {
 
   @Test
   void successfulFillTest() {
-    open("https://demoqa.com/automation-practice-form");
     String firstName = "AlexName";
     String lastName = "AlexFamily";
     String userEmail = "aa@aa.aa";
@@ -52,21 +51,20 @@ public class StudentRegistrationFormTest {
     enteredData.put("Address", currentAddress);
     enteredData.put("State and City", state + " " + city);
 
+    open("https://demoqa.com/automation-practice-form");
     $("#firstName").setValue(firstName);
     $("#lastName").setValue(lastName);
     $("#userEmail").setValue(userEmail);
-    $("#genterWrapper .col-md-9.col-sm-12 [for=gender-radio-3]").shouldHave(text(gender)).click();
+    $("#genterWrapper [for=gender-radio-3]").shouldHave(text(gender)).click();
     $("#userNumber").setValue(userNumber);
-
     $("#dateOfBirthInput").click();
     $(".react-datepicker__month-select").$(byText(monthOfBirth)).click();
     $(".react-datepicker__year-select").$(byText(yearOfBirth)).click();
     $(".react-datepicker__month").$(byText(dateOfBirth)).click();
-
     $("#subjectsInput").val(subject);
     $(".subjects-auto-complete__menu-list").$(byText(subject)).click();
-    $("#hobbiesWrapper .col-md-9.col-sm-12 [for=hobbies-checkbox-3]").shouldHave(text(hobby))
-                                                                     .click();
+    $("#hobbiesWrapper [for=hobbies-checkbox-3]").shouldHave(text(hobby))
+                                                 .click();
     $("#uploadPicture").uploadFile(file);
     $("#currentAddress").setValue(currentAddress);
     $("#stateCity-wrapper #state").click();
